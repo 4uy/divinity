@@ -7,7 +7,8 @@ module.exports = {
 		.setDescription("Debug command with the purpose of testing new features."),
 	async execute(interaction) {
         const embed = new MessageEmbed()
-        .setTitle(`Hello, world!`)
+        .setTitle("Debug")
+        .setDescription("Hello, world!")
         .setColor("#5865F2");
 
         await interaction.reply({
