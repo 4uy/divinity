@@ -11,6 +11,8 @@ client.once("ready", async () => {
     const administrator = await client.users.fetch(process.env.ADMINISTRATOR_ID);
 	administrator.send("**Ready!**");
 
+    client.user.setActivity(`over ${client.guilds.cache.size} servers.`, { type: "WATCHING" });
+
     require("./events")(client);
     require("./commands")(client);
 });
