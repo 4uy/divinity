@@ -5,8 +5,12 @@ const client = new Client({
 	intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES]
 });
 
-client.once("ready", () => {
+client.once("ready", async () => {
     console.log(`Logged in as ${client.user?.tag} (${client.user?.id})`);
+
+    const administrator = await client.users.fetch(process.env.ADMINISTRATOR_ID);
+	administrator.send("**Ready!**");
+
     require("./events")(client);
     require("./commands")(client);
 });
