@@ -12,7 +12,7 @@ module.exports = {
         .setColor("#5865F2");
 
         await interaction.reply({
-            content: `<@${interaction.user.id}>`,
+            content: "",
             embeds: [embed],
             ephemeral: true
         });
