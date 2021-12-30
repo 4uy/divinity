@@ -8,7 +8,7 @@ module.exports = {
         await interaction.reply({
             content: "Hello, world!",
             // embeds: [embed],
-            ephemeral: true 
+            ephemeral: true
         });
     },
 }
