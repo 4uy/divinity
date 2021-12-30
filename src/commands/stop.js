@@ -1,12 +1,13 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
 const { MessageEmbed } = require("discord.js");
+const { administrator } = require("../../config.json")
 
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName("stop")
-		.setDescription("[ADMINISTRATOR] Shuts down the bot."),
+		.setDescription("Shut down the bot."),
 	async execute(interaction) {
-        if (interaction.user.id == process.env.ADMINISTRATOR_ID) {         
+        if (interaction.user.id == administrator) {         
             const embed = new MessageEmbed()
             .setTitle(`Stopping!`)
             .setColor("#ED4245");
