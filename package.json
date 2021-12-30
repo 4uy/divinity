@@ -1,0 +1,14 @@
+{
+  "name": "divinity",
+  "version": "0.0.0",
+  "main": "src/index.js",
+  "author": "Auyium (4uy)",
+  "license": "MIT",
+  "scripts": {
+    "start": "node src/index.js",
+    "watch": "nodemon src/index.js"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
