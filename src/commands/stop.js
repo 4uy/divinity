@@ -8,13 +8,13 @@ module.exports = {
 	async execute(interaction) {
         if (interaction.user.id == process.env.ADMINISTRATOR_ID) {         
             const embed = new MessageEmbed()
-            .setTitle(`**Stopping!**`)
+            .setTitle(`Stopping!`)
             .setColor("#ED4245");
 
             await interaction.reply({
                 // content: "",
                 embeds: [embed],
-                ephemeral: false 
+                ephemeral: true 
             });
 
             process.exit();
