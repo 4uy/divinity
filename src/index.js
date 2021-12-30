@@ -8,6 +8,7 @@ const client = new Client({
 client.once("ready", () => {
     console.log(`Logged in as ${client.user?.tag} (${client.user?.id})`);
     require("./events")(client);
+    require("./commands")(client);
 });
 
 client.login(process.env.TOKEN);
