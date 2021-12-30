@@ -1,14 +1,25 @@
-const { MessageEmbed } = require("discord.js")
+const { Collection } = require("discord.js")
+const commandFiles = require("fs").readdirSync("./src/commands").filter(file => file.endsWith(".js"));
 
 module.exports = (client) => {
-    client.on("messageCreate", async (message) => {
-        if (message.content == "/ping") {
-            let embed = new MessageEmbed()
-            .setTitle(`**Ping**`)
-            .setColor("#57F287")
-            .setThumbnail("https://raw.githubusercontent.com/4uy/divinity/main/res/wifi.png")
-            .addField("Latency", `${Math.round(client.ws.ping)}ms`);
-            await message.reply({ embeds: [embed] });            
-        };
+    client.commands = new Collection();
+    for (const file of commandFiles) {
+        const command = require(`./commands/${file}`);
+        client.commands.set(command.data.name, command);
+        console.log(`Enabled command: /${command.data.name}`)
+    }
+
+    client.on("interactionCreate", async interaction => {
+        if (!interaction.isCommand()) return;
+        
+        const command = client.commands.get(interaction.commandName);
+        if (!command) return;
+    
+        try {
+            await command.execute(interaction, client);
+        } catch (error) {
+            console.error(error);
+            return interaction.reply({ content: "There was an error while executing this command!", ephemeral: true });
+        }
     });
 };

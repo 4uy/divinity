@@ -1,4 +1,4 @@
-const eventFiles = require("fs").readdirSync('./src/events').filter(file => file.endsWith('.js'));
+const eventFiles = require("fs").readdirSync("./src/events").filter(file => file.endsWith(".js"));
 
 module.exports = (client) => {    
     for (const file of eventFiles) {

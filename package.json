@@ -6,9 +6,12 @@
   "license": "MIT",
   "scripts": {
     "start": "node src/index.js",
-    "watch": "nodemon src/index.js"
+    "watch": "nodemon src/index.js",
+    "deploy": "node deploy.js"
   },
   "dependencies": {
+    "@discordjs/rest": "^0.2.0-canary.0",
+    "discord-api-types": "^0.26.0",
     "discord.js": "^13.5.0"
   },
   "devDependencies": {
